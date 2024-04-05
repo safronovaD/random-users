@@ -1,0 +1,23 @@
+.table {
+  &__content {
+    border: 1px solid lightgrey;
+    border-radius: 12px;
+  }
+
+  &__header {
+    display: flex;
+  }
+
+  &__column {
+    width: 50%;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 24px;
+    border-bottom: 1px solid lightgrey;
+
+    @media (max-width: 480px) {
+      font-size: 16px;
+      padding: 16px;
+    }
+  }
+}
