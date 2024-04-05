@@ -7,6 +7,12 @@
     padding: 24px;
     border: 1px solid lightgrey;
     border-radius: 12px;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      max-width: 100%;
+      padding: 16px;
+    }
   }
 
   &__photo {
@@ -17,6 +23,10 @@
 
   &__row {
     font-size: 20px;
+
+    @media (max-width: 480px) {
+      font-size: 16px;
+    }
   }
 
   &__label {
