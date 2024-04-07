@@ -1,4 +1,9 @@
-# vue-table
+# random-users
+
+```
+Node.js - v18.16.0
+Vue.js - v2.6.14
+```
 
 ## Project setup
 ```

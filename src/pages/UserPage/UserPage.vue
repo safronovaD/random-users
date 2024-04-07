@@ -1,27 +1,27 @@
 <template>
-  <div v-if="user" class="user-page container">
+  <div v-if="getUserById(userId)" class="user-page container">
     <div class="user-page__user">
-      <img class="user-page__photo" :src="user.picture.large"/>
+      <img class="user-page__photo" :src="getUserById(userId).picture.large"/>
       <div class="user-page__info">
         <p class="user-page__row">
           <span class="user-page__label">Имя:</span>
-          <span class="user-page__data">{{user.name.first}}</span>
+          <span class="user-page__data">{{getUserById(userId).name.first}}</span>
         </p>
         <p class="user-page__row">
           <span class="user-page__label">Фамилия:</span>
-          <span class="user-page__data">{{user.name.last}}</span>
+          <span class="user-page__data">{{getUserById(userId).name.last}}</span>
         </p>
         <p class="user-page__row">
           <span class="user-page__label">Пол:</span>
-          <span class="user-page__data">{{user.gender}}</span>
+          <span class="user-page__data">{{getUserById(userId).gender}}</span>
         </p>
         <p class="user-page__row">
           <span class="user-page__label">Телефон:</span>
-          <span class="user-page__data">{{user.phone}}</span>
+          <span class="user-page__data">{{getUserById(userId).phone}}</span>
         </p>
         <p class="user-page__row">
           <span class="user-page__label">E-mail:</span>
-          <span class="user-page__data">{{user.email}}</span>
+          <span class="user-page__data">{{getUserById(userId).email}}</span>
         </p>
       </div>
     </div>
@@ -35,7 +35,7 @@ export default {
   name: "UserPage",
   data() {
     return {
-      user: null
+      userId: this.$route.params.id
     }
   },
   computed: {
@@ -43,10 +43,6 @@ export default {
         'getUserById'
     ]),
   },
-  beforeMount() {
-    const userId = this.$route.params.id;
-    this.user = this.getUserById(userId)
-  }
 }
 </script>
 
