@@ -1,6 +1,6 @@
 <template>
-  <div v-if="getUserById(userId)" class="user-page container">
-    <div class="user-page__user">
+  <div class="user-page container">
+    <div v-if="getUserById(userId)" class="user-page__user">
       <img class="user-page__photo" :src="getUserById(userId).picture.large"/>
       <div class="user-page__info">
         <p class="user-page__row">
@@ -24,6 +24,9 @@
           <span class="user-page__data">{{getUserById(userId).email}}</span>
         </p>
       </div>
+    </div>
+    <div v-else class="user-page__error">
+      Данные этого пользователя не найдены
     </div>
   </div>
 </template>

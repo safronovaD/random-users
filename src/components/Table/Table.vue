@@ -1,29 +1,30 @@
 <template>
- <div class="table">
-   <div class="table__content">
-     <div class="table__header">
-       <div class="table__column">ID</div>
-       <div class="table__column">Имя</div>
-     </div>
-     <div class="table__body">
-       <TableRow v-for="user in users" :key="user.id.value" :data="user"/>
-     </div>
-   </div>
- </div>
+  <table class="table">
+    <tr class="table__row table__row--header">
+      <th v-for="(column, index) in columns" :key="index" class="table__cell table__cell--header">{{ column.title }}</th>
+    </tr>
+    <tr v-for="(item, index) in data" :key="index" class="table__row" @click="$emit('click-on-row', item)">
+      <td v-for="(column, index) in columns" :key="index" class="table__cell">{{ getCellData(item, column.alias) }}</td>
+    </tr>
+  </table>
 </template>
 
 <script>
-import TableRow from "@/components/Table/TableRow/TableRow";
-
 export default {
   name: "Table",
-  components: {
-    TableRow
-  },
   props: {
-    users: {
+    columns: {
       type: Array,
       required: true
+    },
+    data: {
+      type: Array,
+      required: true
+    }
+  },
+  methods: {
+    getCellData(item, alias) {
+      return alias.split('.').reduce((acc, curr) => acc[curr], item);
     }
   }
 }

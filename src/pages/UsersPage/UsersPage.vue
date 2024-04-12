@@ -16,7 +16,10 @@
           @pageChanged="changeCurrentPage"
       />
     </div>
-    <Table :users="paginatedUsers"/>
+    <Table
+        :columns="[{title: 'ID', alias: 'id.value'}, {title: 'Имя', alias: 'name.first'}, {title: 'Фамилия', alias: 'name.last'}]"
+        :data="paginatedUsers"
+        @click-on-row="goToUserPage"/>
   </div>
 </template>
 
@@ -60,6 +63,9 @@ export default {
     changePerPage(perPage) {
       this.perPage = perPage;
       this.currentPage = 1;
+    },
+    goToUserPage(user) {
+      this.$router.push(`/user/${user.id.value}`)
     }
   },
   beforeMount() {
